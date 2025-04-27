@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ぼくのプロフィール</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="profile"></div>
+  <div id="games"></div>
+
+  <script>
+    async function loadData() {
+      const response = await fetch('data.json');
+      const data = await response.json();
+      
+      document.body.style.backgroundColor = data.settings.backgroundColor;
+      document.body.style.color = data.settings.textColor;
+      document.body.style.fontSize = data.settings.fontSize;
+
+      const profileDiv = document.getElementById('profile');
+      profileDiv.innerHTML = `
+        <h1>${data.profile.name}</h1>
+        <p>${data.profile.bio}</p>
+        <div>
+          ${Object.entries(data.profile.sns).map(([name, link]) => 
+            `<a href="${link}" target="_blank">${name}</a>`
+          ).join(' ')}
+        </div>
+      `;
+
+      const gamesDiv = document.getElementById('games');
+      data.games.forEach(game => {
+        const gameElement = document.createElement('div');
+        gameElement.classList.add('game');
+        gameElement.innerHTML = `
+          <h2 class="game-title">${game.title}</h2>
+          <div class="game-detail" style="display:none;">
+            <p><strong>フレンドコード:</strong> 
+              <span class="friend-code" data-code="${game.friendCode}">${game.friendCode}</span>
+            </p>
+            <p>
+              <strong>推し:</strong> 
+              <img src="${game.favorite.image}" alt="${game.favorite.name}" style="width:30px; height:30px; vertical-align:middle;"> 
+              ${game.favorite.name}
+            </p>
+            <p>${game.description}</p>
+          </div>
+        `;
+        gameElement.querySelector('.game-title').addEventListener('click', () => {
+          const detail = gameElement.querySelector('.game-detail');
+          detail.style.display = detail.style.display === 'none' ? 'block' : 'none';
+        });
+        gamesDiv.appendChild(gameElement);
+      });
+
+      document.querySelectorAll('.friend-code').forEach(span => {
+        span.addEventListener('click', () => {
+          navigator.clipboard.writeText(span.dataset.code)
+            .then(() => alert('コピーしたよ！'))
+            .catch(err => console.error('コピー失敗:', err));
+        });
+      });
+    }
+
+    loadData();
+  </script>
+</body>
+</html>

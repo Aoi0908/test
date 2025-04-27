@@ -1,0 +1,62 @@
+{
+  "settings": {
+    "backgroundColor": "#f5f5f5",
+    "textColor": "#333333",
+    "fontSize": "16px"
+  },
+  "profile": {
+    "name": "碧海黎",
+    "bio": "いろんなゲームをする高校２年生",
+    "sns": {
+      "Instagram": "https://www.instagram.com/aoi.higashimoto/?next=%2F",
+      "X": "https://x.com/aoisanndayo"
+    }
+  },
+  "games": [
+    {
+      "title": "原神",
+      "friendCode": "802290769",
+      "favorite": {
+        "name": "神里綾華",
+        "image": "/Users/higashimotoaoi/Downloads/IMG_2E82559A8369-1.jpeg"
+      },
+      "description": "結構やってる。楽しい"
+    },
+    {
+      "title": "崩壊スターレイル",
+      "friendCode": "800055479",
+      "favorite": {
+        "name": "ホタル",
+        "image": "l_101_main.jpg"
+      },
+      "description": "多分今１番やってる。楽しい"
+    },
+    {
+      "title": "ゼンレスゾーンゼロ",
+      "friendCode": "1300240408",
+      "favorite": {
+        "name": "アンビー",
+        "image": "images.jpeg"
+      },
+      "description": "単騎を楽しんでる。回避むずくね"
+    },
+    {
+      "title": "VALORANT",
+      "friendCode": "夜宵翠#3723",
+      "favorite": {
+        "name": "ジェット",
+        "image": "IMG_8989.JPG"
+      },
+      "description": "好きだけどずっと下手。座学嫌い"
+    },
+    {
+      "title": "マインクラフト(統合版)",
+      "friendCode": "Rei Aomi2455",
+      "favorite": {
+        "name": "戦闘",
+        "image": "IMG_7467.jpeg"
+      },
+      "description": "色々作ったり戯れたり"
+    }
+  ]
+}
